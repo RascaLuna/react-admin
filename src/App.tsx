@@ -2,7 +2,7 @@
 import React from "react";
 import {Admin, Resource} from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
-// import {PostList} from "../src/components/Posts";
+import {PointList} from "../src/components/Points";
 import {UserList} from "../src/components/Users";
 import "./App.css";
 // const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
@@ -11,7 +11,7 @@ const dataProvider = jsonServerProvider("http://localhost:8000");
 function App() {
   return (
     <Admin dataProvider={dataProvider}>
-      {/* <Resource name="posts" list={PostList} /> */}
+      <Resource name="points" list={PointList} />
       <Resource name="users" list={UserList} />
     </Admin>
   );
