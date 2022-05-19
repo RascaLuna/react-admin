@@ -1,6 +1,6 @@
 // in src/components/Users/index.tsx
 import * as React from "react";
-import {List, Datagrid, NumberField, TextField, EmailField, DateField} from "react-admin";
+import {List, Edit, Datagrid, NumberField, TextField, EmailField, DateField, SimpleForm, TextInput, DateInput} from "react-admin";
 
 export const UserList = (props:any) => (
     <List {...props}>
@@ -15,4 +15,17 @@ export const UserList = (props:any) => (
             <DateField source="updated_at" showTime  />
         </Datagrid>
     </List>
+);
+
+export const UserEdit = (props:any) => (
+    <Edit {...props}>
+        <SimpleForm>
+            <TextInput source="id" />
+            <TextInput source="name" />
+            <TextInput source="sex" />
+            <TextInput source="email" />
+            <TextInput source="prefecture" />
+            <DateInput source="birthday" />
+        </SimpleForm>
+    </Edit>
 );
