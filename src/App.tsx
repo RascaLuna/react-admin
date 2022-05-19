@@ -10,6 +10,7 @@ const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
 function App() {
   return (
     <Admin dataProvider={dataProvider}>
+      <Resource name="posts" list={PostList} />
       <Resource name="users" list={UserList} />
     </Admin>
   );
