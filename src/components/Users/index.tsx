@@ -1,18 +1,18 @@
 // in src/components/Users/index.tsx
 import * as React from "react";
-import {List, Datagrid, TextField, EmailField} from "react-admin";
+import {List, Datagrid, NumberField, TextField, EmailField, DateField} from "react-admin";
 
 export const UserList = (props:any) => (
     <List {...props}>
         <Datagrid rowClick="edit">
-        <TextField source="id" />
-        <TextField source="name" />
-        <TextField source="username" />
-        <EmailField source="email" />
-        <TextField source="address.street" />
-        <TextField source="phone" />
-        <TextField source="website" />
-        <TextField source="company.name" />
+            <NumberField source="id" />
+            <TextField source="name" />
+            <EmailField source="email" />
+            <TextField source="sex" />
+            <TextField source="prefecture" />
+            <DateField source="birthday" />
+            <DateField source="created_at" showTime />
+            <DateField source="updated_at" showTime  />
         </Datagrid>
     </List>
 );
