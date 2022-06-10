@@ -1,31 +1,30 @@
 // App.tsx
 import React from "react";
-import { Admin, Resource } from "react-admin";
+import { Admin, Resource, ListGuesser, EditGuesser } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
-import { PointList } from "../src/components/Points";
-import { PointEdit } from "../src/components/Points";
-import { UserList } from "../src/components/Users";
-import { UserEdit } from "../src/components/Users";
-
-// Guesser用
-// import {ListGuesser, EditGuesser} from "react-admin";
+import { PostList } from "./components/Posts";
+import { PostEdit } from "./components/Posts";
+import { ProfileList } from "../src/components/Profiles";
+import { ProfileEdit } from "../src/components/Profiles";
 
 import "./App.css";
+
 // const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
 const dataProvider = jsonServerProvider("http://localhost:8000");
 
 function App() {
   return (
     <Admin dataProvider={dataProvider}>
-      <Resource name="points" list={PointList} edit={PointEdit} />
-      <Resource name="users" list={UserList} edit={UserEdit} />
+      <Resource name="posts" list={PostList} edit={PostEdit} />
+      <Resource name="profiles" list={ProfileList} edit={ProfileEdit} />
     </Admin>
   );
 }
 
 // const App = () => (
 //   <Admin dataProvider={dataProvider}>
-//     <Resource name="users" list={ListGuesser} />
+//     <Resource name="posts" list={PostList} edit={PostEdit} />
+//     <Resource name="profiles" list={ProfileList} edit={ProfileEdit} />
 //   </Admin>
 // );
 
