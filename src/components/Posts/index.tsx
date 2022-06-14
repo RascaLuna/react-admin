@@ -3,19 +3,19 @@ import * as React from "react";
 import {
     List,
     Edit,
+    Create,
     Datagrid,
     TextField,
     NumberField,
     NumberInput,
     BooleanField,
-    ReferenceInput,
-    DateField,
     SimpleForm,
     TextInput,
-    DateInput,
-    SelectInput,
     BooleanInput,
+    required
 } from "react-admin";
+import { RichTextInput } from 'ra-input-rich-text';
+
 
 export const PostList = (props: any) => (
     <List {...props}>
@@ -37,4 +37,13 @@ export const PostEdit = (props: any) => (
             <BooleanInput source="is_deleted" />
         </SimpleForm>
     </Edit>
+);
+
+export const PostCreate = () => (
+    <Create>
+        <SimpleForm>
+            <TextInput source="title" />
+            <RichTextInput source="body" />
+        </SimpleForm>
+    </Create>
 );
