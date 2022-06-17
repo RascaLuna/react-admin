@@ -12,7 +12,6 @@ import {
     SimpleForm,
     TextInput,
     BooleanInput,
-    required
 } from "react-admin";
 import { RichTextInput } from 'ra-input-rich-text';
 

@@ -37,10 +37,7 @@ export const ProductShow = (props: any) => (
                 <NumberField source="id" />
                 <TextField source="product_name" />
                 <TextField source="detail" />
-                <S3FileField
-                    apiRoot=''
-                    source='obj_url'
-                />
+                <ImageField source="obj_url" />
             </SimpleShowLayout>
         </Show>
 );
@@ -66,6 +63,17 @@ export const ProductCreate = () => (
             <ImageInput source="images" label="related photos" accept="image/* ">
                 <ImageField source="obj_url" />
             </ImageInput>
+            {/* <S3FileInput
+                source='phto'
+                apiRoot='localhost:8000/'
+                fileCoverImg='someImgURL'
+                multipleFiles
+                uploadOptions={{
+                    signingUrl: 'localhost:8000/products/',
+                    s3path: 'cierto-test-bucket/test-img',
+                    multiple: true,
+                }}
+            /> */}
         </SimpleForm>
     </Create>
 );
