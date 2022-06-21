@@ -17,8 +17,6 @@ import {
     SimpleShowLayout
 } from "react-admin";
 import { RichTextInput } from 'ra-input-rich-text';
-import { S3FileField } from '@fusionworks/ra-s3-input';
-import { S3FileInput } from '@fusionworks/ra-s3-input';
 
 export const ProductList = (props: any) => (
     <List {...props}>
@@ -58,22 +56,16 @@ export const ProductEdit = (props: any) => (
 export const ProductCreate = () => (
     <Create>
         <SimpleForm>
-            <TextInput source="product_name" validate={[required()]} fullWidth />
+            <TextInput source="product_name" validate={[required()]} />
             <RichTextInput source="detail" />
-            <ImageInput source="images" label="related photos" accept="image/* ">
-                <ImageField source="obj_url" />
+            <ImageInput
+                multiple={true}
+                source="file"
+                label="Related pictures"
+                accept="image/*"
+            >
+                <ImageField source="url" title="name" />
             </ImageInput>
-            {/* <S3FileInput
-                source='phto'
-                apiRoot='localhost:8000/'
-                fileCoverImg='someImgURL'
-                multipleFiles
-                uploadOptions={{
-                    signingUrl: 'localhost:8000/products/',
-                    s3path: 'cierto-test-bucket/test-img',
-                    multiple: true,
-                }}
-            /> */}
         </SimpleForm>
     </Create>
 );
