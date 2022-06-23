@@ -34,9 +34,15 @@ const myDataProvider = {
 
         const formData = new FormData();
 
-        formData.append('product_name', params.data.product_name);
-        formData.append('detail', params.data.detail);
         formData.append('file', imageFile);
+
+        const urlParams = new URLSearchParams();
+        urlParams.set('product_name', params.data.product_name);
+        urlParams.set('detail', params.data.detail);
+
+        const queryParams = '?' +  urlParams.toString();
+        // console.log(queryParams);
+
 
         return httpClient(`${servicesHost}/${resource}`, {
             method: 'POST',
