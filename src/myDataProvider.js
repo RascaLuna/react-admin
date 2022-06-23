@@ -23,8 +23,9 @@ const myDataProvider = {
         }
 
         const uploadFile = params.data.file[0];
-
         const blobUrl = uploadFile.url;
+
+        // 画像URLの取得
         const blobObject = fetch(blobUrl);
 
         const fileName = uploadFile.name;
@@ -33,18 +34,19 @@ const myDataProvider = {
         const imageFile = new File([blobObject], fileName, {type: "application/octet-stream"});
 
         const formData = new FormData();
-
+        // Form Dataへバイナリデータを格納
         formData.append('file', imageFile);
 
+        // Query Parameterの取得
         const urlParams = new URLSearchParams();
         urlParams.set('product_name', params.data.product_name);
         urlParams.set('detail', params.data.detail);
 
+        // stringへ変換
         const queryParams = '?' +  urlParams.toString();
-        // console.log(queryParams);
+        console.log(typeof(queryParams));
 
-
-        return httpClient(`${servicesHost}/${resource}`, {
+        return httpClient(`${servicesHost}/${resource}/${queryParams}`, {
             method: 'POST',
             body: formData
         })
