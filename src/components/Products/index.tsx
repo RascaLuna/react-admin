@@ -20,7 +20,7 @@ import { RichTextInput } from 'ra-input-rich-text';
 
 export const ProductList = (props: any) => (
     <List {...props}>
-        <Datagrid rowClick="show">
+        <Datagrid rowClick="edit">
             <NumberField source="id" />
             <TextField source="product_name" />
             <TextField source="detail" />

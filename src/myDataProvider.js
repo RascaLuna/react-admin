@@ -22,19 +22,27 @@ const myDataProvider = {
             return dataProvider.create(resource, params);
         }
 
-        let formData = new FormData();
+        const uploadFile = params.data.file[0];
+
+        const blobUrl = uploadFile.url;
+        const blobObject = fetch(blobUrl);
+
+        const fileName = uploadFile.name;
+
+        // Blob -> Fileへ変換
+        const imageFile = new File([blobObject], fileName, {type: "application/octet-stream"});
+
+        const formData = new FormData();
 
         formData.append('product_name', params.data.product_name);
         formData.append('detail', params.data.detail);
-        console.log(params.data.file[0].url)
-        formData.append('file', params.data.file.rawFile);
+        formData.append('file', imageFile);
 
         return httpClient(`${servicesHost}/${resource}`, {
             method: 'POST',
-            body: formData,
-        }).then(({ json }) => ({
-            data: { ...params.data, id: json.id },
-        }));
+            body: formData
+        })
+        .then(response => response.json())
     }
 };
 
