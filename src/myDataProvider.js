@@ -44,13 +44,12 @@ const myDataProvider = {
 
         // stringへ変換
         const queryParams = '?' +  urlParams.toString();
-        console.log(typeof(queryParams));
 
         return httpClient(`${servicesHost}/${resource}/${queryParams}`, {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(response => response.json()); // TODO バグ修正
     }
 };
 
