@@ -14,7 +14,7 @@ const httpClient = (url, options = {}) => {
 
 const dataProvider = jsonServerProvider(servicesHost, httpClient);
 
-const myDataProvider = {
+const fileUploadProvider = {
     ...dataProvider,
     create: (resource, params) => {
         if (!params.data.file) {
@@ -53,4 +53,4 @@ const myDataProvider = {
     }
 };
 
-export default myDataProvider;
+export default fileUploadProvider;
